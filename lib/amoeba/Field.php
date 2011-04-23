@@ -1,0 +1,105 @@
+<?php
+namespace amoeba;
+use amoeba\Exception,
+	amoeba\Field\Definition;
+
+class Field
+{
+	protected $def = null;
+	protected $value = null;
+
+	/**
+	 * Create a new field
+	 *
+	 * @param Definition $def
+	 */
+	public function __construct(Definition $def)
+	{
+		$this->def = $def;
+	}
+	
+	//////////////////////////////////////////////////////////////////////
+	// MAGIC ////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+	
+	/**
+	 * Get a property from the definition
+	 *
+	 * @param string $method
+	 * @param array  $args
+	 * @return boolean
+	 */
+	public function __call($method, $args)
+	{
+		$get = strtolower(substr($method, 0,3));
+		$key = strtolower(substr($method, 3));
+		if ($get == 'get') {
+			return $this->def->$key;
+		}
+		return $this->def->$method();
+	}
+
+	//////////////////////////////////////////////////////////////////////
+	// PUBLIC ///////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Return this field's definition
+	 *
+	 * @return Definition
+	 */
+	public function getDefinition()
+	{
+		return $this->def;
+	}
+
+	/**
+	 * Return this field's name
+	 *
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->def->getName();
+	}
+	
+	/**
+	 * Return this field's display string
+	 *
+	 * @return string
+	 */
+	public function getDisplay()
+	{
+		return $this->def->getDisplay();
+	}
+	
+	/**
+	 * Return this field's type
+	 *
+	 * @return string
+	 */
+	public function getType()
+	{
+		return $this->def->getType();
+	}
+
+	/**
+	 * Return this field's value
+	 *
+	 * @return mixed
+	 */
+	public function getValue()
+	{
+		return $this->value;
+	}
+	
+	/**
+	 * Set this field's value
+	 *
+	 * @param mixed $value
+	 */
+	public function setValue($value)
+	{
+		$this->value = $value;
+	}
+}
