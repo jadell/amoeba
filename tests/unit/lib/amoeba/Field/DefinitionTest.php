@@ -64,4 +64,10 @@ class amoeba_Field_DefinitionTest extends PHPUnit_Framework_TestCase
 		self::assertEquals($value, $this->def->foo);
 		self::assertTrue($this->def->isFoo());
 	}
+	
+	public function testUnknownMethod_MethodDoesNotExist_ThrowsException()
+	{
+		self::setExpectedException('Exception');
+		$this->def->wtf();
+	}
 }

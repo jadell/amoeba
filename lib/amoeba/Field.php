@@ -8,6 +8,8 @@ class Field
 	protected $def = null;
 	protected $value = null;
 
+	protected $obj = null;
+	
 	/**
 	 * Create a new field
 	 *
@@ -82,6 +84,16 @@ class Field
 	{
 		return $this->def->getType();
 	}
+	
+	/**
+	 * Return the object this field thinks it is attached to 
+	 *
+	 * @return Object
+	 */
+	public function getObject()
+	{
+		return $this->obj;
+	}
 
 	/**
 	 * Return this field's value
@@ -91,6 +103,16 @@ class Field
 	public function getValue()
 	{
 		return $this->value;
+	}
+	
+	/**
+	 * Set the object this field thinks it is attached to 
+	 *
+	 * @param Object $obj
+	 */
+	public function setObject(Object $obj)
+	{
+		$this->obj = $obj;
 	}
 	
 	/**

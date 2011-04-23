@@ -1,5 +1,6 @@
 <?php
 use amoeba\Field,
+	amoeba\Object,
 	amoeba\Field\Definition;
 
 class amoeba_FieldTest extends PHPUnit_Framework_TestCase
@@ -47,5 +48,12 @@ class amoeba_FieldTest extends PHPUnit_Framework_TestCase
 	{
 		$this->field->setValue("foo");
 		self::assertEquals("foo", $this->field->getValue());
+	}
+	
+	public function testSetObject_SetsObjectToAttach_ReturnsObject()
+	{
+		$obj = new Object();
+		$this->field->setObject($obj);
+		self::assertSame($obj, $this->field->getObject());
 	}
 }

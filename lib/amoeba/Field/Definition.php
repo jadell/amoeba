@@ -46,7 +46,7 @@ class Definition
 		if ($is == 'is') {
 			return isset($this->properties[$key]) ? (bool)$this->properties[$key] : false;
 		}
-		throw new Exception("Unknown property '{$key}'");
+		throw new Exception("Unknown method '{$key}'");
 	}
 	
 	/**
