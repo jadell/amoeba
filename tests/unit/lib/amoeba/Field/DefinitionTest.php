@@ -70,4 +70,31 @@ class amoeba_Field_DefinitionTest extends PHPUnit_Framework_TestCase
 		self::setExpectedException('Exception');
 		$this->def->wtf();
 	}
+
+	public function testCustomGet_GetMethodDefined_ReturnsValueFromCustomGetMethod()
+	{
+		$def = new amoeba_Field_DefinitionTest_TestDefinition();
+		self::assertEquals(123, $def->tester);
+	}
+
+	public function testCustomSet_SetMethodDefined_ReturnsValueFromCustomSetMethod()
+	{
+		$def = new amoeba_Field_DefinitionTest_TestDefinition();
+		$def->adder = 1;
+		self::assertEquals(3, $def->adder);
+	}
+}
+
+
+class amoeba_Field_DefinitionTest_TestDefinition extends Definition
+{
+	public function getTester()
+	{
+		return 123;
+	}
+
+	public function setAdder($i)
+	{
+		$this->properties['adder'] = $i+2;
+	}
 }

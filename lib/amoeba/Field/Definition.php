@@ -46,7 +46,7 @@ class Definition
 		if ($is == 'is') {
 			return isset($this->properties[$key]) ? (bool)$this->properties[$key] : false;
 		}
-		throw new Exception("Unknown method '{$key}'");
+		throw new Exception("Unknown method '{$method}'");
 	}
 	
 	/**
@@ -58,6 +58,11 @@ class Definition
 	public function __get($key)
 	{
 		$key = strtolower($key);
+		$getter = 'get'.$key;
+		if (method_exists($this, $getter)) {
+			return $this->$getter();
+		}
+
 		return isset($this->properties[$key]) ? $this->properties[$key] : null;
 	}
 	
@@ -70,7 +75,12 @@ class Definition
 	public function __set($key, $value)
 	{
 		$key = strtolower($key);
-		$this->properties[$key] = $value;
+		$setter = 'set'.$key;
+		if (method_exists($this, $setter)) {
+			$this->$setter($value);
+		} else {
+			$this->properties[$key] = $value;
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////
