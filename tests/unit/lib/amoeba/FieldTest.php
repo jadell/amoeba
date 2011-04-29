@@ -63,6 +63,14 @@ class amoeba_FieldTest extends PHPUnit_Framework_TestCase
 		self::assertEquals("baz", $this->def->value);
 	}
 	
+	public function testGetSetValue_ValueIsAnArray_SetsAsArrayObject()
+	{
+		$value = array('a','b','c');
+		$this->field->setValue($value);
+		self::assertEquals($value, (array)$this->field->getValue());
+		self::assertInstanceOf('ArrayObject', $this->field->getValue());
+	}
+
 	public function testSetObject_SetsObjectToAttach_ReturnsObject()
 	{
 		$obj = new Object();

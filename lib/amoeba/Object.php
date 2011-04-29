@@ -40,7 +40,7 @@ class Object
 	public function __get($propertyName)
 	{
 		$field = $this->getField($propertyName);
-		return $field->getValue();
+		return $field ? $field->getValue() : null;
 	}
 	
 	/**
@@ -54,7 +54,7 @@ class Object
 	public function __set($propertyName, $value)
 	{
 		$field = $this->getField($propertyName);
-		$field->setValue($value);
+		$field ? $field->setValue($value) : null;
 	}
 	
 	//////////////////////////////////////////////////////////////////////

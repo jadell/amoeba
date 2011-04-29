@@ -92,6 +92,9 @@ class Field
 	 */
 	public function setValue($value)
 	{
+		if (is_array($value)) {
+			$value = new \ArrayObject($value);
+		}
 		$this->value = $value;
 	}
 }
