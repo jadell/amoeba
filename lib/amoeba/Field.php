@@ -56,36 +56,6 @@ class Field
 	}
 
 	/**
-	 * Return this field's name
-	 *
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->def->getName();
-	}
-	
-	/**
-	 * Return this field's display string
-	 *
-	 * @return string
-	 */
-	public function getDisplay()
-	{
-		return $this->def->getDisplay();
-	}
-	
-	/**
-	 * Return this field's type
-	 *
-	 * @return string
-	 */
-	public function getType()
-	{
-		return $this->def->getType();
-	}
-	
-	/**
 	 * Return the object this field thinks it is attached to 
 	 *
 	 * @return Object

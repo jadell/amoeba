@@ -50,6 +50,19 @@ class amoeba_FieldTest extends PHPUnit_Framework_TestCase
 		self::assertEquals("foo", $this->field->getValue());
 	}
 	
+	public function testGetSetValue_ValueOnMultipleFields_ReturnsValueUniqueToField()
+	{
+		$this->def->value = "baz";
+		$field2 = new Field($this->def);
+
+		$this->field->setValue("foo");
+		$field2->setValue("bar");
+
+		self::assertEquals("foo", $this->field->getValue());
+		self::assertEquals("bar", $field2->getValue());
+		self::assertEquals("baz", $this->def->value);
+	}
+	
 	public function testSetObject_SetsObjectToAttach_ReturnsObject()
 	{
 		$obj = new Object();
