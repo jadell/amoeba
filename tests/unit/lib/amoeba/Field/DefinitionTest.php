@@ -64,6 +64,13 @@ class amoeba_Field_DefinitionTest extends PHPUnit_Framework_TestCase
 		$def->adder = 1;
 		self::assertEquals(3, $def->adder);
 	}
+	
+	public function testDynamicGetSet_GetAndSetNotDefined_ReturnsValue()
+	{
+		$value = "bar";
+		$this->def->setFoo($value);
+		self::assertEquals($value, $this->def->getFoo());
+	}
 }
 
 

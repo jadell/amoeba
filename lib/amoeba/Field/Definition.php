@@ -22,6 +22,15 @@ class Definition
 	 */
 	public function __call($method, $args)
 	{
+		$first3 = strtolower(substr($method, 0,3));
+		$key = strtolower(substr($method, 3));
+		if ($first3 == 'get') {
+			return $this->$key;
+		} else if ($first3 == 'set') {
+			$this->$key = $args[0];
+			return;
+		}
+		
 		$is = strtolower(substr($method, 0,2));
 		$key = strtolower(substr($method, 2));
 		if ($is == 'is') {
