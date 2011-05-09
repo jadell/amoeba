@@ -69,7 +69,7 @@ class Definition
 		if (method_exists($this, $setter)) {
 			$this->$setter($value);
 		} else {
-			$this->properties[$key] = $value;
+			$this->_setRaw($key, $value);
 		}
 	}
 
@@ -142,5 +142,16 @@ class Definition
 	public function _getRaw($key)
 	{
 		return isset($this->properties[$key]) ? $this->properties[$key] : null;
+	}
+
+	/**
+	 * Set the raw value, without any custom setters
+	 *
+	 * @param string $key
+	 * @param mixed  $val
+	 */
+	public function _setRaw($key, $val)
+	{
+		$this->properties[$key] = $val;
 	}
 }
