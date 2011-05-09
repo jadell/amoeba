@@ -71,6 +71,15 @@ class amoeba_Field_DefinitionTest extends PHPUnit_Framework_TestCase
 		$this->def->setFoo($value);
 		self::assertEquals($value, $this->def->getFoo());
 	}
+	
+	public function testDynamicGetSet_ChainSets_AllowsChaining()
+	{
+		$this->def
+			->setFoo('bar')
+			->setBaz('qux');
+		self::assertEquals('bar', $this->def->getFoo());
+		self::assertEquals('qux', $this->def->getBaz());
+	}
 }
 
 

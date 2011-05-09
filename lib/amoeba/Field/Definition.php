@@ -28,7 +28,7 @@ class Definition
 			return $this->$key;
 		} else if ($first3 == 'set') {
 			$this->$key = $args[0];
-			return;
+			return $this;
 		}
 		
 		$is = strtolower(substr($method, 0,2));
