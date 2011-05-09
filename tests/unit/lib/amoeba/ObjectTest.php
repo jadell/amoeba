@@ -14,13 +14,8 @@ class amoeba_ObjectTest extends PHPUnit_Framework_TestCase
 	
 	public function testSetup_SetMetadata_MetadataRetrievable()
 	{
-		$type = 'my_type';
 		$display = 'My Display';
-		
-		$this->obj->setType($type);
 		$this->obj->setDisplay($display);
-		
-		self::assertEquals($type, $this->obj->getType());
 		self::assertEquals($display, $this->obj->getDisplay());
 	}
 	
@@ -36,8 +31,7 @@ class amoeba_ObjectTest extends PHPUnit_Framework_TestCase
 		$newValue = 'extra crispy';
 		
 		$def = new Field\Definition();
-		$def->setName('flavor')
-			->setType(Field\Definition::TypeString);
+		$def->setName('flavor');
 		$field = new Field($def);
 		$field->setValue($originalValue);
 			
@@ -47,15 +41,13 @@ class amoeba_ObjectTest extends PHPUnit_Framework_TestCase
 		$this->obj->flavor = $newValue;
 		self::assertEquals($newValue, $this->obj->flavor);
 		
-		self::assertEquals(Field\Definition::TypeString, $this->obj->flavor()->getType());
 		self::assertSame($this->obj, $this->obj->flavor()->getObject());
 	}
 
 	public function testAddField_FieldValueIsArray_FieldCanBeAccessedAsArray()
 	{
 		$def = new Field\Definition();
-		$def->setName('flavor')
-			->setType(Field\Definition::TypeString);
+		$def->setName('flavor');
 		$field = new Field($def);
 
 		$this->obj->addField($field);
@@ -75,12 +67,12 @@ class amoeba_ObjectTest extends PHPUnit_Framework_TestCase
 	public function testListFields_FieldsAdded_ReturnsArrayOfFields()
 	{
 		$def = new Definition();
-		$def->setName('flavor')->setType(Field\Definition::TypeString);
+		$def->setName('flavor');
 		$field1 = new Field($def);
 		$this->obj->addField($field1);
 
 		$def = new Definition();
-		$def->setName('spicy')->setType(Field\Definition::TypeBoolean);
+		$def->setName('spicy');
 		$field2 = new Field($def);
 		$this->obj->addField($field2);
 

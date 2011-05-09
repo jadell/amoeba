@@ -32,25 +32,6 @@ class amoeba_Field_DefinitionTest extends PHPUnit_Framework_TestCase
 		self::assertEquals('My Name', $this->def->getDisplay());
 	}
 	
-	public function testGetType_NotSet_DefaultsToString()
-	{
-		self::assertEquals(Definition::TypeString, $this->def->getType());
-	}
-	
-	public function testSetType_UnknownType_ThrowsException()
-	{
-		$type = 'blargh';
-		self::setExpectedException('Exception');
-		$this->def->setType($type);
-	}
-	
-	public function testSetType_KnownType_SetsType()
-	{
-		$type = Definition::TypeInteger;
-		$this->def->setType($type);
-		self::assertEquals($type, $this->def->getType());
-	}
-	
 	public function testSetGetProperty_PropertyNotSet_ReturnsNull()
 	{
 		self::assertNull($this->def->foo);

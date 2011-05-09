@@ -4,27 +4,8 @@ use amoeba\Exception;
 
 class Definition
 {
-	const TypeString   = 'string';
-	const TypeText 	   = 'text';
-	const TypeInteger  = 'int';
-	const TypeBoolean  = 'boolean';
-	const TypeDateTime = 'datetime';
-	const TypeDate     = 'date';
-	const TypeFloat    = 'float';
-
-	protected static $types = array(
-		self::TypeString,
-		self::TypeText,
-		self::TypeInteger,
-		self::TypeBoolean,
-		self::TypeDateTime,
-		self::TypeDate,
-		self::TypeFloat,
-	);
-
 	protected $name = null;
 	protected $display = null;
-	protected $type = self::TypeString;
 	
 	protected $properties = array();
 
@@ -136,32 +117,6 @@ class Definition
 	public function setDisplay($display)
 	{
 		$this->display = $display;
-		return $this;
-	}
-
-	/**
-	 * Return this field's type
-	 *
-	 * @return string
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
-	
-	/**
-	 * Set this field's type
-	 *
-	 * @param string $type
-	 * @return DW_Asset_Field
-	 */
-	public function setType($type)
-	{
-		if (!in_array($type, self::$types)) {
-			throw new Exception("Unknown field type '{$type}'");
-		}
-		
-		$this->type = $type;
 		return $this;
 	}
 }
