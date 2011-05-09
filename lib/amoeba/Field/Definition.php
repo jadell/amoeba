@@ -53,7 +53,7 @@ class Definition
 			return $this->$getter();
 		}
 
-		return isset($this->properties[$key]) ? $this->properties[$key] : null;
+		return $this->_getRaw($key);
 	}
 	
 	/**
@@ -127,5 +127,20 @@ class Definition
 	{
 		$this->display = $display;
 		return $this;
+	}
+	
+	//////////////////////////////////////////////////////////////////////
+	// PROTECTED ////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Get the raw value, without any custom getters
+	 *
+	 * @param string $key
+	 * @return mixed
+	 */
+	public function _getRaw($key)
+	{
+		return isset($this->properties[$key]) ? $this->properties[$key] : null;
 	}
 }
