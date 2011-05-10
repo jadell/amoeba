@@ -5,7 +5,6 @@ use amoeba\Exception,
 
 class Object
 {
-	protected $type = null;
 	protected $display = null;
 
 	protected $fields = array();
@@ -100,16 +99,6 @@ class Object
 	}
 	
 	/**
-	 * Return the asset type
-	 *
-	 * @return string
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
-	
-	/**
 	 * Return the asset display string
 	 *
 	 * @return string
@@ -117,17 +106,6 @@ class Object
 	public function getDisplay()
 	{
 		return $this->display;
-	}
-
-	/**
-	 * Set the asset type
-	 *
-	 * @param string $type
-	 */
-	public function setType($type)
-	{
-		$this->type = $type;
-		return $this;
 	}
 	
 	/**
