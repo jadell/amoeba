@@ -83,6 +83,7 @@ class Field
 	public function setObject(Object $obj)
 	{
 		$this->obj = $obj;
+		return $this;
 	}
 	
 	/**
@@ -96,5 +97,6 @@ class Field
 			$value = new \ArrayObject($value);
 		}
 		$this->value = $value;
+		return $this;
 	}
 }
