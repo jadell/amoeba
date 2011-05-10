@@ -38,7 +38,7 @@ class Field
 		if ($get == 'get') {
 			return $this->def->$key;
 		}
-		return $this->def->$method();
+		return call_user_func_array(array($this->def, $method), $args);
 	}
 
 	//////////////////////////////////////////////////////////////////////

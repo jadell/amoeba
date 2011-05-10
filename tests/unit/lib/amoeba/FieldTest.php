@@ -24,6 +24,10 @@ class amoeba_FieldTest extends PHPUnit_Framework_TestCase
 		self::assertSame($this->def, $this->field->getDefinition());
 		self::assertEquals($name, $this->field->getName());
 		self::assertEquals($display, $this->field->getDisplay());
+		
+		$newName = 'fieldNameNEW';
+		$this->field->setName($newName);
+		self::assertEquals($newName, $this->def->getName());
 	}
 	
 	public function testGetSet_DynamicProperties_ReturnsCorrectValues()
