@@ -37,6 +37,9 @@ class Field
 		$key = strtolower(substr($method, 3));
 		if ($get == 'get') {
 			return $this->def->$key;
+		} else if ($get == 'set') {
+			call_user_func_array(array($this->def, $method), $args);
+			return $this;
 		}
 		return call_user_func_array(array($this->def, $method), $args);
 	}
